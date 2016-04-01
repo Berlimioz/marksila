@@ -83,7 +83,9 @@ Let's say that you wish to use your Marksila language along with Markdown. Then 
 With this kind of code, part of text out of marksila tags will be rendered as markdown to html, so that something like :
 
 ```
-{{h1}} Some title {{end-h1}}
+{{div}}
+Some text here
+{{end-div}}
 * first item
 * second item
 ### A small title
@@ -92,7 +94,9 @@ With this kind of code, part of text out of marksila tags will be rendered as ma
 will be rendered in html as :
 
 ```html
-<h1>Some title</h1>
+<div>
+	<p>Some text here</p>
+</div>
 <ul>
 	<li>first item</li>
 	<li>second item</li>
@@ -101,4 +105,3 @@ will be rendered in html as :
 ```
 
 This project rocks and uses MIT-LICENSE.
-
