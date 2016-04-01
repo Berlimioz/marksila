@@ -1,0 +1,24 @@
+atoms:
+  "{{": open_tag
+  "}}": close_tag
+custom_tags:
+  div:
+    closing_tag: end
+  grid:
+    html_tag: div
+    classes:
+      - grid
+    closing_tag: end
+  grid-item:
+    html_tag: div
+    classes:
+      - grid__item
+      - lap--one-whole
+      - palm--one-whole
+    closing_tag: end
+  fdiv:
+    html_tag: div
+    classes:
+      - fixed-action-btn
+    style_data_regexp:
+      - (bottom|right)=([0-9\-]+%)

@@ -1,0 +1,6 @@
+atoms:
+  "{{": open_tag
+  "}}": close_tag
+custom_tags:
+  div:
+    closing_tag: end
