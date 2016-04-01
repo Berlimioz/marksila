@@ -12,7 +12,7 @@ With Marksila, you can easily create your own simple language to be rendered in 
 
 By default, a Marksila tag "{{tagName}}" starts a block, which should be closed by "{{end-tagName}}". If the tag corresponds to a predefined variable, then it does not need to be closed.
 
-```ruby
+```
 {{h1}} Some title {{end-h1}}
 {{div#myDiv1}}
 
