@@ -66,6 +66,39 @@ Some text
 </div>
 ```
 
+## Using marksila along with another markup language
+
+In a Marksila language, you have two different kinds of data : tags and simple text. If you need to, you can plug another renderer for the simple text part.
+
+Let's say that you wish to use your Marksila language along with Markdown. Then all you have to do is passing Marksila.config["simple_text_renderer"] an object responding to a to_html(val,opts) method that returns the html rendering of markdown code.
+
+ ```ruby
+ class MyMarkdownRenderer
+  def to_html(text,options={})
+    render_to_markdown(text,options)
+  end
+ end
+ Marksila.config["simple_text_renderer"] = MyMarkdownRenderer.new
+ ```
+With this kind of code, part of text out of marksila tags will be rendered as markdown to html, so that something like :
+
+```
+{{h1}} Some title {{end-h1}}
+* first item
+* second item
+### A small title
+```
+
+will be rendered in html as :
+
+```html
+<h1>Some title</h1>
+<ul>
+	<li>first item</li>
+	<li>second item</li>
+</ul>
+<h3>A small title</h3>
+```
 
 This project rocks and uses MIT-LICENSE.
 
