@@ -15,7 +15,7 @@ module Marksila
     end
 
     # ======= METHODS TO HANDLE TOKEN ADDITION TO WORDS =======
-    def add_atom_to_tokens(atom, token_type=atom.atom_type)
+    def add_atom_to_tokens(atom, token_type=atom.try(:atom_type))
       self.atoms << atom
       self.send("add_#{token_type}_to_tokens", atom)
     end
@@ -64,9 +64,9 @@ module Marksila
 
     def state_for(atom)
       last_atom_type = self.atoms.last.try(:atom_type)
-      if atom.atom_type == 'open_tag'
+      if atom.try(:atom_type) == 'open_tag'
         :opening_brackets
-      elsif atom.atom_type == "close_tag"
+      elsif atom.try(:atom_type) == "close_tag"
         :closing_brackets
       elsif last_atom_type.present? && last_atom_type == 'open_tag'
         :text_into_brackets
@@ -87,13 +87,13 @@ module Marksila
     end
 
     def text_into_brackets(atom)
-      last_atom_type = self.atoms.last.atom_type
+      last_atom_type = self.atoms.last.try(:atom_type)
       if last_atom_type == :open_bracket
-        if self.atoms.last.atom_type == :open_bracket
+        if self.atoms.last.try(:atom_type) == :open_bracket
           raise "Invalid atom : you cannot have opening brackets if previous ones have not been closed."
         end
       elsif last_atom_type == :simple_text
-        raise "You should not have this kind of atom (#{atom.atom_type}) here..."
+        raise "You should not have this kind of atom (#{atom.try(:atom_type)}) here..."
       end
 
       buffer = ''
@@ -120,7 +120,7 @@ module Marksila
     end
 
     def simple_text(atom)
-      if self.atoms.last.atom_type == :open_bracket
+      if self.atoms.last.try(:atom_type) == :open_bracket
         raise "You should not have a simple text token type after an opening brackets one"
       end
       add_atom_to_tokens(atom)

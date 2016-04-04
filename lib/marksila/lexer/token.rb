@@ -16,7 +16,7 @@ module Marksila
     end
 
     def self.new_from_simple_text(atom)
-      if atom.atom_type == :simple_text
+      if atom.try(:atom_type) == :simple_text
         token = new(:text, atom.value)
       else
         raise "Simple text atom only here"
