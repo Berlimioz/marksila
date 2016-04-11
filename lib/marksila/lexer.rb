@@ -19,11 +19,13 @@ module Marksila
     def create_atoms
       if Marksila.config["atoms"].present?
         p = Marksila.config["atoms"].keys.join("|")
+
         @str_atoms = @text.split(/(#{p})/)
 
+        p @str_atoms.join(" **** ")
         @str_atoms.collect do |str_atom|
-          Atom.new(str_atom) unless str_atom.blank?
-        end.select(&:present?)
+          Atom.new(str_atom)
+        end#.select{|s| !s.nil?}
       else
         raise "No configuration found..."
       end

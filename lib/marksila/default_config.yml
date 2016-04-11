@@ -1,3 +1,4 @@
 atoms:
   "{{": open_tag
   "}}": close_tag
+  "\n\n": new_line

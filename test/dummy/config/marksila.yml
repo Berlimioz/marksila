@@ -1,6 +1,7 @@
 atoms:
   "{{": open_tag
   "}}": close_tag
+  '\n\n': new_line
 custom_tags:
   div:
     closing_tag: end

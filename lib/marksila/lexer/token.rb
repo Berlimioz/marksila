@@ -4,7 +4,7 @@ module Marksila
     #include TestingActions::Token::Display
     attr_accessor :token_type, :value, :css_classes, :css_id, :html_data
 
-    WORD_TYPES = [:tag, :text, :variable_name]
+    WORD_TYPES = [:tag, :text, :variable_name, :new_line]
 
     # TODO : make sure html_data is right formated
     def initialize(token_type, value=nil, css_classes=[], css_id=nil, html_data: [])

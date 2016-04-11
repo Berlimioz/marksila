@@ -24,6 +24,10 @@ module Marksila
       self.tokens << Lexer::Token.new_from_simple_text(atom)
     end
 
+    def add_new_line_to_tokens(atom)
+      self.tokens << Lexer::Token.new(:new_line, atom.value)
+    end
+
     def add_open_tag_to_tokens(atom)
       self.current_token = Lexer::Token.new(:tag)
     end
@@ -68,6 +72,8 @@ module Marksila
         :opening_brackets
       elsif atom.try(:atom_type) == "close_tag"
         :closing_brackets
+      elsif atom.try(:atom_type) == "new_line"
+        :new_line
       elsif last_atom_type.present? && last_atom_type == 'open_tag'
         :text_into_brackets
       else
@@ -83,6 +89,10 @@ module Marksila
     end
 
     def closing_brackets(atom)
+      self.add_atom_to_tokens(atom)
+    end
+
+    def new_line(atom)
       self.add_atom_to_tokens(atom)
     end
 

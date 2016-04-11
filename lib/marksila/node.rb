@@ -21,6 +21,10 @@ module Marksila
           new_node = TextNode.new(token)
           new_node.parent = current_node
           current_node.children << new_node
+        elsif token.token_type == :new_line
+          new_node = NewLineNode.new(token)
+          new_node.parent = current_node
+          current_node.children << new_node
         elsif options["variables"].present? && options["variables"].keys.include?(token.value)
           new_node = VariableNode.new(token)
           new_node.parent = current_node

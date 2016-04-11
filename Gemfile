@@ -14,9 +14,8 @@ gemspec
 # gem 'byebug', group: [:development, :test]
 
 gem 'haml-rails'
-gem 'sass-rails'
-gem 'compass-rails'
-gem 'compass-inuit'
-gem 'font-awesome-rails'
-gem 'materialize-sass'
 
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end

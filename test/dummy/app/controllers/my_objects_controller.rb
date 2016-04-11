@@ -15,6 +15,11 @@ class MyObjectsController < ApplicationController
 {{div}}
 This is a div and this : [{{VARIABLE1}}] is the VARIABLE1
 {{end}}
+
+There I jumped a line.
+
+
+And I jumped again ! What's gonna happen ???
 TEXT
     @marksila = Marksila::Renderer.render(@text, options).html_safe
   end

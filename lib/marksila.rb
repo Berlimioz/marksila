@@ -12,6 +12,7 @@ require 'marksila/node'
 require 'marksila/tag_node'
 require 'marksila/text_node'
 require 'marksila/variable_node'
+require 'marksila/new_line_node'
 require 'marksila/version'
 
 module Marksila
@@ -21,10 +22,24 @@ module Marksila
 
   def self.config
     custom_file_path = "#{Dir.pwd}/config/marksila.yml"
-    @config ||= if File.exists?(custom_file_path)
-                  YAML.load_file(custom_file_path)
-                else
-                  YAML.load_file("#{File.expand_path(File.dirname(__FILE__))}/marksila/default_config.yml")
-                end
+
+    if @config.nil?
+      @config ||= if File.exists?(custom_file_path)
+                    YAML.load_file(custom_file_path)
+                  else
+                    YAML.load_file("#{File.expand_path(File.dirname(__FILE__))}/marksila/default_config.yml")
+                  end
+
+      if @config["atoms"].present?
+        @config["atoms"].keys.each do |k|
+          if k =~ /\\n/
+            @config["atoms"][k.gsub("\\n", "\n")] = @config["atoms"][k]
+            @config["atoms"].delete(k)
+          end
+        end
+      end
+    end
+    @config
+
   end
 end
