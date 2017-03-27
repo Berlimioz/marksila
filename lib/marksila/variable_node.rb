@@ -12,7 +12,7 @@ module Marksila
                     begin
                       to_return = object.send(options["variables"][self.value][:method])
                     rescue Exception => e
-                      to_return = "{{UNDEFINED : #{self.value}}}"
+                      to_return = "{{UNDEFINED : #{self.value} -> #{e.message}}}"
                     end
                     to_return
                   else

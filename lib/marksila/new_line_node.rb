@@ -7,7 +7,7 @@ module Marksila
     end
 
     def to_html(options={})
-      "<br />"
+      '<br/>'
     end
   end
 

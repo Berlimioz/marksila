@@ -23,3 +23,5 @@ custom_tags:
       - fixed-action-btn
     style_data_regexp:
       - (bottom|right)=([0-9\-]+%)
+authorized_tags:
+  ["h1","h2", "h3", "h4", "h5", "h6", "h7", "div", "p", "a", "img"]

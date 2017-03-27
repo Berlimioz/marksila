@@ -31,7 +31,13 @@ module Marksila
           current_node.children << new_node
         else
           if token.opening_tag?
-            new_node = TagNode.new(token)
+            new_node =
+              if Marksila.custom_node_tags.keys.include?(token.value)
+                Marksila.custom_node_tags[token.value].constantize.new(token)
+              else
+                TagNode.new(token)
+              end
+
             new_node.parent = current_node
             current_node.children << new_node
             current_node = new_node

@@ -18,6 +18,11 @@ require 'marksila/version'
 module Marksila
   class << self
     attr_accessor :config
+    attr_accessor :custom_node_tags
+
+    def custom_node_tags
+      @custom_node_tags ||= {}
+    end
   end
 
   def self.config
@@ -40,6 +45,10 @@ module Marksila
       end
     end
     @config
-
   end
+
+  def self.authorized_tags
+    config['authorized_tags'] #+ (custom_node_tags.keys || [])
+  end
+
 end

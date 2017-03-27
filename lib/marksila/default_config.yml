@@ -2,3 +2,5 @@ atoms:
   "{{": open_tag
   "}}": close_tag
   "\n\n": new_line
+authorized_tags:
+  ["h1","h2", "h3", "h4", "h5", "h6", "h7", "div", "p", "a", "img"]

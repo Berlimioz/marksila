@@ -7,6 +7,7 @@ module Marksila
     def initialize(token)
       raise "A TagNode can only be created from a text token" unless token.nil? || token.token_type == :tag
       raise "A TagNode can only be initialized from an opening tag token" unless token.nil? || token.opening_tag?
+      raise "Unauthorized node type : #{token.try(:value)}" unless token.nil? || Marksila.authorized_tags.include?(token.value)
       super(token)
       @opened = true
       @original_tag = token.value if token.present?
