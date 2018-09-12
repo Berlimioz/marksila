@@ -21,8 +21,6 @@ module Marksila
         p = Marksila.config["atoms"].keys.join("|")
 
         @str_atoms = @text.split(/(#{p})/)
-
-        p @str_atoms.join(" **** ")
         @str_atoms.collect do |str_atom|
           Atom.new(str_atom)
         end#.select{|s| !s.nil?}

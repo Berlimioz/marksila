@@ -109,9 +109,9 @@ module Marksila
       buffer = ''
       current_atom_type = :tag_name
       atom.value.each_char do |c|
-        if c == '.' || (current_atom_type == :tag_name && c == '#') || c == ' ' || c == ':'
+        if (current_atom_type != :html_data && (c == '.' || c == ':')) || (current_atom_type == :tag_name && c == '#') || c == ' '
           self.add_data_to_current_token(buffer, current_atom_type)
-          if c == '.' || c == ':'
+          if current_atom_type != :html_data && (c == '.' || c == ':')
             buffer = ''
             current_atom_type = :css_class
           elsif (current_atom_type == :tag_name && c == '#')
