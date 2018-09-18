@@ -13,6 +13,19 @@ require 'marksila/tag_node'
 require 'marksila/text_node'
 require 'marksila/variable_node'
 require 'marksila/new_line_node'
+
+require 'marksila/emails'
+require 'marksila/emails/html_parser'
+require 'marksila/emails/lexer'
+require 'marksila/emails/lexer/atom'
+require 'marksila/emails/lexer/context'
+require 'marksila/emails/lexer/token'
+require 'marksila/emails/html_parser/node'
+require 'marksila/emails/html_parser/new_line_node'
+require 'marksila/emails/html_parser/tag_node'
+require 'marksila/emails/html_parser/text_node'
+require 'marksila/emails/html_parser/variable_node'
+
 require 'marksila/version'
 
 module Marksila
@@ -35,7 +48,7 @@ module Marksila
                     YAML.load_file("#{File.expand_path(File.dirname(__FILE__))}/marksila/default_config.yml")
                   end
 
-      if @config["atoms"].present?
+      if !@config["atoms"].nil? && !@config["atoms"].empty?
         @config["atoms"].keys.each do |k|
           if k =~ /\\n/
             @config["atoms"][k.gsub("\\n", "\n")] = @config["atoms"][k]
@@ -50,5 +63,4 @@ module Marksila
   def self.authorized_tags
     config['authorized_tags'] #+ (custom_node_tags.keys || [])
   end
-
 end

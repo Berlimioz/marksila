@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.4.1'
 
 # Declare your gem's dependencies in marksila.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
@@ -18,4 +19,10 @@ gem 'haml-rails'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
+end
+
+group :test do
+  gem 'rspec'
+  gem 'mocha'
+  gem 'byebug'
 end
