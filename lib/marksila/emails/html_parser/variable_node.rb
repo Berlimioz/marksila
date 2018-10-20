@@ -22,7 +22,6 @@ module Marksila
                 end
                 to_return = object.send(options["variables"][self.value][:method], data_opts)
               else
-                puts "*** METHOD *** #{options["variables"][self.value][:method]}"
                 to_return = object.send(options["variables"][self.value][:method])
               end
 
