@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.5.1'
+ruby '2.6.1'
 
 # Declare your gem's dependencies in marksila.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and

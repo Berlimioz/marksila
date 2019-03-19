@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     marksila (0.0.1)
-      rails (~> 5.2.1)
+      rails (>= 5.2.1)
 
 GEM
   remote: https://rubygems.org/
@@ -64,7 +64,7 @@ GEM
     diff-lcs (1.3)
     erubi (1.7.1)
     erubis (2.7.0)
-    globalid (0.4.1)
+    globalid (0.4.2)
       activesupport (>= 4.2.0)
     haml (5.0.4)
       temple (>= 0.8.0)
@@ -91,7 +91,7 @@ GEM
       mimemagic (~> 0.3.2)
     metaclass (0.0.4)
     method_source (0.9.0)
-    mimemagic (0.3.2)
+    mimemagic (0.3.3)
     mini_mime (1.0.1)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
@@ -176,7 +176,7 @@ DEPENDENCIES
   sqlite3
 
 RUBY VERSION
-   ruby 2.5.1p57
+   ruby 2.6.1p33
 
 BUNDLED WITH
-   1.16.4
+   1.17.2
